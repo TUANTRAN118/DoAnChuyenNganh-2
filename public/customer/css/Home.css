@@ -1,0 +1,162 @@
+/* .container {
+    background: white;
+} */
+
+.card-text {
+    text-align: left;
+    color: black;
+    margin-top: 5px;
+}
+
+/* .card-body:hover{
+    color: tomato;
+} */
+
+.card-body{
+    text-align: left;
+}
+
+.card {
+    border: 1px solid rgba(0,0,0,0.5);
+}
+
+a {
+    text-decoration: none;
+    color: black;
+}
+
+a:hover{
+    color: tomato;
+    ;
+}
+
+
+.Phan_Trang {
+    display: flex;
+    flex-direction: row;
+    flex-wrap: wrap;
+    justify-content: center;
+}
+
+/* .Trang {
+    display: flex;
+    list-style-type: none;
+    margin-top: 15px;
+}
+
+.Trang > li {
+    padding: 5px 15px;
+    border: 1px solid #333;
+    margin-right: 5px;
+    font-size: 10px;
+    font-weight: bold;
+    cursor: pointer;
+} */
+
+.Trang > li:hover {
+    color: white;
+    background-color: #333;
+}
+
+.Trang_1 {
+    color: white;
+    background-color: #333;
+}
+
+.col {
+    text-align: -webkit-center;
+}
+
+.slides{
+    margin-bottom: 20px;
+}
+
+.rouded{
+    border-radius: 70%;
+}
+
+.banner{
+    margin-bottom: 100px;
+}
+
+.content h5{
+    font-weight: bold;
+}
+
+.content span{
+    color: #7e7b7b;
+    font-weight: 600;
+}
+
+
+/* card */
+.product-card {
+    position: relative;
+}
+
+.product-image {
+    position: relative;
+    overflow: hidden;
+}
+
+.product-image img {
+    transition: transform 0.3s ease;
+}
+
+.product-image .overlay {
+    position: absolute;
+    top: 0;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    background: rgba(0, 0, 0, 0.5);
+    color: #fff;
+    opacity: 0;
+    transition: opacity 0.3s ease;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.product-image:hover img {
+    transform: scale(1.1);
+}
+
+.product-image:hover .overlay {
+    opacity: 1;
+}
+
+
+.product-card{
+    border-radius: 5%;
+}
+
+.product-image {
+    border-radius: 19px 19px 0 0;
+    position: relative;
+    overflow: hidden;
+}
+
+h5{
+    color: #333;
+}
+
+
+.btn-buy{
+    color: rgb(222, 222, 222);
+    width: 200px;
+    background-color: #FFAA04;
+    border-color: #fff;
+}
+
+.btn-love{
+    width: 45px;
+    height: 45px;
+
+}
+
+
+
+
+
+

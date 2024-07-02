@@ -1,0 +1,176 @@
+<body>
+    <div class="container slides">
+        <div id="carouselExample" class="carousel slide" data-bs-ride="carousel">
+            <div class="carousel-inner">
+                <div class="carousel-item active">
+                    <img src="/assets/slide-1.jpg" class="d-block w-100" alt="First Slide"
+                        style="max-height: 450px; object-fit: cover;">
+                    <div class="carousel-caption d-none d-md-block">
+                        <p>Dòng giới thiệu .</p>
+                    </div>
+                </div>
+                <div class="carousel-item">
+                    <img src="/assets/slide-2.jpg" class="d-block w-100" alt="Second Slide"
+                        style="max-height: 450px; object-fit: cover;">
+                    <div class="carousel-caption d-none d-md-block">
+                        <p>Dòng giới thiệu .</p>
+                    </div>
+                </div>
+                <div class="carousel-item">
+                    <img src="/assets/slide-3.jpg" class="d-block w-100" alt="Third Slide"
+                        style="max-height: 450px; object-fit: cover;">
+                    <div class="carousel-caption d-none d-md-block">
+                        <p>Dòng giới thiệu .</p>
+                    </div>
+                </div>
+            </div>
+            <button class="carousel-control-prev" type="button" data-bs-target="#carouselExample" data-bs-slide="prev">
+                <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+                <span class="visually-hidden">Previous</span>
+            </button>
+            <button class="carousel-control-next" type="button" data-bs-target="#carouselExample" data-bs-slide="next">
+                <span class="carousel-control-next-icon" aria-hidden="true"></span>
+                <span class="visually-hidden">Next</span>
+            </button>
+        </div>
+
+        <script>
+            var myCarousel = document.querySelector('#carouselExample');
+            var carousel = new bootstrap.Carousel(myCarousel);
+        </script>
+    </div>
+
+
+
+    <!-- banner -->
+    <div class='container banner'>
+        <div class='row'>
+            <div class='col text-center' style="height: 250px; margin-top: 80px; display: flex; align-items: flex-end;">
+                <div class='col rounded d-flex justify-content-around position-relative'
+                    style="margin-top: 100px; height: 120px; background-color: #F8F7F7;">
+
+                    <div class='col-3 image-banner'>
+                        <div class='image position-absolute' style="left: 120px; bottom: 100px;">
+                            <img src="/assets/banner/img_shipper.png" alt="Image" class=''
+                                style="height: 90px; width: 90px;" />
+                        </div>
+
+                        <div class='content mt-4'>
+                            <h5>Giao dịch nhanh chóng</h5>
+                            <span> Mua hàng chỉ bằng </span> <br />
+                            <span> một cuộc điện thoại</span>
+                        </div>
+                    </div>
+
+                    <div class='col-3 image-banner'>
+                        <div class='image position-absolute' style="left: 452px; bottom: 100px;">
+                            <img src="/assets/banner/img_home.png" alt="Image" class=''
+                                style="height: 90px; width: 90px;" />
+                        </div>
+
+                        <div class='content mt-4'>
+                            <h5>Đa dạng nhà cung cấp</h5>
+                            <span> Đối tác trải dài </span> <br />
+                            <span> khắp cả nước</span>
+                        </div>
+                    </div>
+                    <div class='col-3 image-banner'>
+                        <div class='image position-absolute' style="left: 775px ; bottom: 100px;">
+                            <img src="/assets/banner/img_earth.png" alt="Image" class=''
+                                style="height: 80px; width: 80px;" />
+                        </div>
+
+                        <div class='content mt-4'>
+                            <h5>Sản phẩm đạt chuẩn</h5>
+                            <span> Không chứa chất bảo quản </span> <br />
+                            <span> Chứng nhận VietGPA</span>
+                        </div>
+                    </div>
+                    <div class='col-3 image-banner'>
+                        <div class='image position-absolute' style="left: 1095px ; bottom: 100px;">
+                            <img src="/assets/banner/img_shield.png" alt="Image" class=''
+                                style="height: 90px; width: 90px;" />
+                        </div>
+
+                        <div class='content mt-4'>
+                            <h5>Chứng thực minh bạch</h5>
+                            <span> Gian hàng chứng thực </span> <br />
+                            <span> rõ ràng, công khai</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+
+
+    <!-- card san pham -->
+
+    <% dataHomeLsp.forEach((dataLsp)=> { %>
+        <div class="container">
+            <div class="Tieu_de" style="margin-top: 10px;">
+                <div>
+                    <%= dataLsp.Ten %>
+                </div>
+            </div>
+            <div class="row">
+                <% let dem=1; dataHomeSp.forEach((dataSp)=> {
+                    if (dataLsp.ID == dataSp.ID_LoaiSanPham && dem <= 4) { %>
+                        <div class="col-sm-3">
+                            <div class="card mb-3 product-card " style="max-width: 350px;">
+                                <div class="product-image">
+                                    <img src="/admin/image/<%= dataSp.imgName %>" class="card-img-top" alt="..."
+                                        style="height: 200px; object-fit: cover;">
+                                    <div class="overlay">
+                                        <div class="text">Xem chi tiết</div>
+                                    </div>
+                                </div>
+                                <div class="card-body">
+                                    <h5 class="card-title"
+                                        style="overflow: hidden; text-overflow: ellipsis; white-space: nowrap;">
+                                        <%= dataSp.TenSanPham %>
+                                    </h5>
+                                    <p class="card-text">Giá bán: <span class="in-dam"
+                                            style="color: red; font-size: larger;"><strong>
+                                                <%= dataSp.GiaBan.toLocaleString() %>/kg
+                                            </strong></span></p>
+                                    <p class="card-text">Số lượng: <span style="font-weight: bold; color: rgba(0, 0, 255, 0.608);">
+                                            <%= dataSp.SoLuong %>kg
+                                        </span></p>
+                                    <p class="card-text">Xuất xứ: <%= dataSp.XuatXu %>
+                                    </p>
+
+                                    <div class="d-flex justify-content-between">
+                                        <a href="/customer/san-pham/chi-tiet/<%= dataLsp.ID %>/<%= dataSp.ID %>"
+                                            class="btn btn-primary me-md-3 btn-buy" style="border-radius: 20px;">Thêm
+                                            giỏ hàng</a>
+                                        <button class="btn-love btn btn-outline-danger" style="border-radius: 50%;">Yêu
+                                            thích</button>
+                                    </div>
+
+
+
+                                </div>
+                            </div>
+                        </div>
+                        <% dem +=1; } }) %>
+            </div>
+
+            <div class="d-grid gap-2 d-md-flex justify-content-md-end" style="margin: 10px 0px;">
+                <button class="btn btn-primary me-md-2" type="button"
+                    style="background: #FFAA04;border-color: #FFAA04;"><a
+                        href="/customer/san-pham/loai-san-pham/<%= dataLsp.ID %>">Xem tất cả <i
+                            class="fa fa-arrow-right" aria-hidden="true"></i></a></button>
+            </div>
+        </div>
+
+        <% }) %>
+
+
+
+
+
+
+
+</body>

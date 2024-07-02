@@ -1,0 +1,42 @@
+<div class="container">
+    <% if(!dataSp[0]) { %>
+        <p style="text-align: center;">Không có sản phẩm cần tìm</p>
+    <% } else { %>
+    <div class="Tieu_de" style="margin-top: 10px;">
+        <div>
+            Tìm kiếm: <%= title %>
+        </div>
+    </div>
+    <div class="row">
+        <% dataSp.forEach((datasp) => {
+            %>
+                <div class="col-sm-3">
+                    <div class="card mb-3 product-card" style="max-width: 350px;">
+                        <div class="product-image">
+                            <img src="/admin/image/<%= datasp.imgName %>" class="card-img-top" alt="..." style="height: 200px; object-fit: cover;">
+                            <div class="overlay">
+                                <div class="text">Xem chi tiết</div>
+                            </div>
+                        </div>
+                        <div class="card-body">
+                            <h5 class="card-title"
+                                style="overflow: hidden; text-overflow: ellipsis; white-space: nowrap;">
+                                <%= datasp.TenSanPham %>
+                            </h5>
+                            <p class="card-text">Xuất xứ: <%= datasp.XuatXu %>
+                            </p>
+                            <p class="card-text">Giá bán: <%= datasp.GiaBan %>/kg</p>
+                            <p class="card-text">Số lượng: <%= datasp.SoLuong %>kg</p>
+                            <div class="d-flex justify-content-between">
+                                <a href="/customer/san-pham/chi-tiet/<%= datasp.ID_LoaiSanPham %>/<%= datasp.ID %>"
+                                    class="btn btn-primary me-md-3 btn-buy" style="border-radius: 20px;">Thêm giỏ hàng</a>
+                                <button class="btn-love btn btn-outline-danger" style="border-radius: 50%;">Yêu thích</button>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            <%  
+        }) %>
+    </div>
+    <% } %>
+</div>

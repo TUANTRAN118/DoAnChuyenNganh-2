@@ -1,0 +1,121 @@
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css">
+
+<div class="container-fuild header">
+
+
+    <div class="container-fluid">
+        <div class="d-flex justify-content-center" style="background-color: #FFD37E; height: 30px; padding: 2px;">
+            <div class="" style="display: flex; align-items: center;">
+                <img src="/assets/logoH.png" alt="Logo header"
+                    style="height: 27px; width: 27px; object-fit: fill; margin-right: 5px;">
+                <div style="font-size: 18px; color: #288966; font-weight: bold;">
+                    Sàn giao dịch sản phẩm chăn nuôi Lâm Đồng
+                </div>
+            </div>
+        </div>
+        <img src="/assets/logo-removebg-preview.png" alt=""
+            style="height: 180px; width: 180px; position: absolute; margin: 0px 80px;" />
+
+
+        <div class="container">
+            <ul class="nav justify-content-center">
+                <!-- Phần logo và thanh tìm kiếm -->
+
+                <li>
+                    <form class="d-flex search-bar" style="" method="post" action="/customer/san-pham/search">
+                        <input class="form-control" type="search" placeholder="&#xf002; Tìm kiếm sản phẩm ..." aria-label="Search" name="search">
+                        <button class="btn btn-outline-success" type="submit" style="color: white"><i class="fa fa-search"></i> Tìm kiếm</button>
+                    </form>
+                </li>
+                
+                
+
+
+
+                <!-- Phần đăng nhập hoặc hiển thị tên tài khoản -->
+                <li class="nav-item signup">
+                    <% if(!sessionID) { %>
+                        <button type="button" class="btn btn-success"><a href="/customer/login" class="auth-link"><i
+                                    class="fa fa-user"></i> Đăng nhập</a></button>
+                </li>
+                <li class="nav-item login">
+                    <button type="button" class="btn btn-danger"><a href="/customer/signup" class="auth-link"><i
+                                class="fa fa-user-plus"></i> Đăng ký</a></button>
+                </li>
+                <% } else { %>
+                    <li class="nav-item dropdown" id="dropdown">
+                        <button class="dropdown-toggle account-button" id="navbarDropdown" role="button"
+                            data-bs-toggle="dropdown" aria-expanded="false">
+                            <i class="fa fa-user"></i> Tài khoản: <%= sessionID.TenTK %>
+                        </button>
+                        <ul class="dropdown-menu" aria-labelledby="navbarDropdown">
+                            <li><a class="dropdown-item" href="/customer/changePass"><i class="fa fa-key"></i> Đổi mật
+                                    khẩu</a></li>
+                            <li><a class="dropdown-item" href="/customer/cart"><i class="fa fa-shopping-cart"></i> Giỏ
+                                    hàng</a></li>
+                            <li><a class="dropdown-item" href="/customer/don-hang"><i class="fa fa-list"></i> Đơn hàng
+                                    hiện có</a></li>
+                            <li><a class="dropdown-item" href="/customer/don-hang/lich-su"><i class="fa fa-history"></i>
+                                    Lịch sử đặt hàng</a></li>
+                            <li><a class="dropdown-item" href="/customer/login"><i class="fa fa-sign-out"></i> Đăng
+                                    xuất</a></li>
+                        </ul>
+                    </li>
+                    <% } %>
+
+            </ul>
+
+
+
+
+
+            <ul class="nav justify-content-center">
+                <!-- Phần Trang chủ, Sản phẩm và Xuất xứ -->
+                <li class="nav-item">
+                    <a class="nav-link active navH" aria-current="page" href="/customer/home">TRANG CHỦ</a>
+                </li>
+                <li class="nav-item dropdown" id="dropdown">
+                    <a class="nav-link dropdown-toggle navH" href="#" id="navbarDropdown" role="button"
+                        data-bs-toggle="dropdown" aria-expanded="false">
+                        SẢN PHẨM
+                    </a>
+                    <ul class="dropdown-menu" aria-labelledby="navbarDropdown">
+                        <% dataHeaderSp.forEach((data)=> { %>
+                            <li><a class="dropdown-item" href="/customer/san-pham/loai-san-pham/<%= data.ID %> ">
+                                    <%= data.Ten %>
+                                </a></li>
+                            <% }) %>
+                    </ul>
+                </li>
+
+
+                <li class="nav-item dropdown" id="dropdown">
+                    <a class="nav-link dropdown-toggle navH" href="#" id="navbarDropdown" role="button"
+                        data-bs-toggle="dropdown" aria-expanded="false">
+                        XUÂT XỨ
+                    </a>
+                    <ul class="dropdown-menu" aria-labelledby="navbarDropdown">
+                        <% dataHeaderXx.forEach((data)=> { %>
+                            <li><a class="dropdown-item" href="/customer/san-pham/xuat-xu/<%= data.ID %> ">
+                                    <%= data.XuatXu %>
+                                </a></li>
+                            <% }) %>
+                    </ul>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link active navH" aria-current="page" href="/customer/huongdan">HƯỚNG DẪN GIAO DỊCH</a>
+                </li>
+
+                <li class="nav-item">
+                    <a class="nav-link active navH" aria-current="page" href="/customer/lienhe">LIÊN HỆ</a>
+                </li>
+            </ul>
+
+
+
+
+        </div>
+
+        <script src="/customer/js/popper.min.js"></script>
+        <script src="/customer/js/bootstrap.min.js"></script>
+    </div>

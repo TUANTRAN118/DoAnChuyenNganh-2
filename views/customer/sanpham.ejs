@@ -1,0 +1,100 @@
+<div class="container">
+    <% if(!dataXx) { if(!dataLsp[0]) { %>
+        <p style="text-align: center;">Không có trái cây nào</p>
+        <% } else { %>
+            <div class="Tieu_de" style="margin-top: 10px;">
+                <div>
+                    <%= dataLsp[0].Ten %>
+                </div>
+            </div>
+            <div class="row">
+                <% dataLsp.forEach((dataSp)=> {
+                    %>
+                    <div class="col-sm-3">
+                        <div class="card mb-3 product-card " style="max-width: 350px;">
+                            <div class="product-image">
+                                <img src="/admin/image/<%= dataSp.imgName %>" class="card-img-top" alt="..."
+                                    style="height: 200px; object-fit: cover;">
+                                <div class="overlay">
+                                    <div class="text">Xem chi tiết</div>
+                                </div>
+                            </div>
+                            <div class="card-body">
+                                <h5 class="card-title"
+                                    style="overflow: hidden; text-overflow: ellipsis; white-space: nowrap;">
+                                    <%= dataSp.TenSanPham %>
+                                </h5>
+                                <p class="card-text">Giá bán: <span class="in-dam"
+                                        style="color: red; font-size: larger;"><strong>
+                                            <%= dataSp.GiaBan.toLocaleString() %>/kg
+                                        </strong></span></p>
+                                <p class="card-text">Số lượng: <span
+                                        style="font-weight: bold; color: rgba(0, 0, 255, 0.608);">
+                                        <%= dataSp.SoLuong %>kg
+                                    </span></p>
+                                <p class="card-text">Xuất xứ: <%= dataSp.XuatXu %>
+                                </p>
+                                <div class="d-flex justify-content-between">
+                                    <a href="/customer/san-pham/chi-tiet/<%= dataLsp.ID %>/<%= dataSp.ID %>"
+                                        class="btn btn-primary me-md-3 btn-buy" style="border-radius: 20px;">Thêm giỏ
+                                        hàng</a>
+                                    <button class="btn-love btn btn-outline-danger" style="border-radius: 50%;">Yêu
+                                        thích</button>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <% }) %>
+            </div>
+            <% } %>
+                <% } if(!dataLsp) { if(!dataXx[0]) { %>
+                    <p style="text-align: center;">Không có trái cây nào</p>
+                    <% } else { %>
+                        <div class="Tieu_de" style="margin-top: 10px;">
+                            <div>
+                                <%= dataXx[0].XuatXu %>
+                            </div>
+                        </div>
+                        <div class="row">
+                            <% dataXx.forEach((dataSp)=> {
+                                %>
+                                <div class="col-sm-3">
+                                    <div class="card mb-3 product-card " style="max-width: 350px;">
+                                        <div class="product-image">
+                                            <img src="/admin/image/<%= dataSp.imgName %>" class="card-img-top" alt="..."
+                                                style="height: 200px; object-fit: cover;">
+                                            <div class="overlay">
+                                                <div class="text">Xem chi tiết</div>
+                                            </div>
+                                        </div>
+                                        <div class="card-body">
+                                            <h5 class="card-title"
+                                                style="overflow: hidden; text-overflow: ellipsis; white-space: nowrap;">
+                                                <%= dataSp.TenSanPham %>
+                                            </h5>
+                                            <p class="card-text">Giá bán: <span class="in-dam"
+                                                    style="color: red; font-size: larger;"><strong>
+                                                        <%= dataSp.GiaBan.toLocaleString() %>/kg
+                                                    </strong></span></p>
+                                            <p class="card-text">Số lượng: <span
+                                                    style="font-weight: bold; color: rgba(0, 0, 255, 0.608);">
+                                                    <%= dataSp.SoLuong %>kg
+                                                </span></p>
+                                            <p class="card-text">Xuất xứ: <%= dataSp.XuatXu %>
+                                            </p>
+                                            <div class="d-flex justify-content-between">
+                                                <a href="/customer/san-pham/chi-tiet/<%= dataLsp.ID %>/<%= dataSp.ID %>"
+                                                    class="btn btn-primary me-md-3 btn-buy"
+                                                    style="border-radius: 20px;">Thêm giỏ hàng</a>
+                                                <button class="btn-love btn btn-outline-danger"
+                                                    style="border-radius: 50%;">Yêu thích</button>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                                <% }) %>
+                        </div>
+                        <% } %>
+                            <% } %>
+
+</div>

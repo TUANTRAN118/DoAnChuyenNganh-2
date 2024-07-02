@@ -1,0 +1,79 @@
+<% if(!dataDetailSp[0]) { %>
+    <p class="text-center text-danger mt-4">Không có sản phẩm nào</p>
+<% } else { %>
+    <div class="container bg-white p-4 mt-4 rounded shadow-sm">
+        <style>
+            .image-bordered {
+                border: 4px solid rgba(255, 165, 0, 0.5);
+                border-radius: 5px;
+                width: 100%;
+                height: 130px;
+                object-fit: cover;
+            }
+            .border-decor {
+                border-bottom: 4px solid rgba(255, 165, 0, 0.5);
+            }
+            .highlight-price {
+                color: red;
+                font-weight: bold;
+            }
+        </style>
+        <div class="mb-4">
+            <h3><strong>Chi tiết sản phẩm: <%= dataDetailSp[0].TenSanPham %></strong></h3>
+        </div>
+        <div class="row">
+            <div class="col-md-5 d-flex justify-content-center align-items-center mb-4">
+                <img src="/admin/image/<%= dataDetailSp[0].imgName %>" alt="<%= dataDetailSp[0].TenSanPham %>" class="img-fluid rounded shadow">
+            </div>
+            <div class="col-md-7">
+                <form action="/customer/san-pham/add-to-cart" method="post">
+                    <h4 class="mb-3"><input type="text" name="TenSP" value="<%= dataDetailSp[0].TenSanPham %>" class="form-control-plaintext" readonly></h4>
+                    <p>Giá: <input type="text" name="DonGia" value="<%= dataDetailSp[0].GiaBan.toLocaleString('vi-VN') %>" class="form-control-plaintext highlight-price" readonly style="text-align: right;"> /kg</p>
+                    <p>Xuất xứ: <input type="text" name="XuatXu" value="<%= dataDetailSp[0].XuatXu %>" class="form-control-plaintext" readonly style="text-align: right;"></p>
+                    <p>Số lượng hiện có: <input type="text" name="SoLuongCo" value="<%= dataDetailSp[0].SoLuong %>" class="form-control-plaintext" readonly style="text-align: right;">kg</p>
+                    <div class="mb-3">
+                        <label for="SoLuongMua" class="form-label">Số lượng mua:</label>
+                        <input type="number" name="SoLuongMua" id="SoLuongMua" min="1" max="<%= dataDetailSp[0].SoLuong %>" class="form-control" required>
+                    </div>
+                    <input type="hidden" name="idLsp" value="<%= dataDetailSp[0].ID_LoaiSanPham %>">
+                    <input type="hidden" name="idSp" value="<%= dataDetailSp[0].ID %>">
+                    <button type="submit" class="btn btn-danger"><i class="fa fa-cart-plus" aria-hidden="true"></i> Thêm vào giỏ hàng</button>
+                </form>
+            </div>
+        </div>
+    </div>
+    <div class="container bg-white p-4 mt-4 rounded shadow-sm">
+        <div class="mb-4">
+            <h4><strong>Sản phẩm cùng loại</strong></h4>
+        </div>
+        <% if(!dataSameSp[0]) { %>
+            <p class="text-center text-secondary">Chưa có sản phẩm cùng loại</p>
+        <% } else { %>
+        <div class="row">
+            <% dem = 1; dataSameSp.forEach((data) => {
+                if(dem <= 6 ){ %>
+                    <div class="col-sm-6 col-md-4 col-lg-2 mb-4">
+                        <a href="/customer/san-pham/chi-tiet/<%= data.ID_LoaiSanPham %>/<%= data.ID %>" class="text-decoration-none text-dark">
+                            <div class="card h-100 shadow-sm">
+                                <img src="/admin/image/<%= data.imgName %>" class="card-img-top image-bordered" alt="<%= data.TenSanPham %>">
+                                <div class="card-body border-decor">
+                                    <h6 class="card-title"><%= data.TenSanPham %></h6>
+                                    <p class="card-text">Xuất xứ: <%= data.XuatXu %></p>
+                                    <p class="card-text highlight-price">Giá bán: <%= data.GiaBan.toLocaleString('vi-VN') %>/kg</p>
+                                    <p class="card-text">Số lượng: <%= data.SoLuong %>kg</p>
+                                </div>
+                            </div>
+                        </a>
+                    </div>
+                <%  dem += 1
+                }
+            }) %>
+        </div>
+        <div class="d-grid gap-2 d-md-flex justify-content-md-end mt-4">
+            <a href="/customer/san-pham/loai-san-pham/<%= dataSameSp[0].ID_LoaiSanPham %>" class="btn btn-primary" style="background-color: #FFAA04;">Xem tất cả <i class="fa fa-arrow-right" aria-hidden="true"></i></a>
+        </div>
+        <% } %>
+    </div>
+<% } %>
+
+
